@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-for-country',
@@ -9,11 +10,23 @@ import { Component } from '@angular/core';
 export class ForCountryComponent {
 
   term:string ="";
+  thereIsError:boolean = false;
 
-  constructor() { }
+  constructor(private searchService:SearchService) { }
 
   search(){
-    console.log(this.term)
+    this.thereIsError=false;      
+    //console.log(this.term)
+    this.searchService.searchCountry(this.term)
+    .subscribe((result)=>{
+      console.log(result);      
+    }, (err)=>{
+      console.log(err.error.status);
+      if(err.error.status === 404){
+        this.thereIsError=true;
+        console.log("here")
+      }      
+    });
   }
   
 
