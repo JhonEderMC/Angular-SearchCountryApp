@@ -10,9 +10,9 @@ import { AppRoutingModule } from './app-routing.moudel';
   declarations: [
     AppComponent
   ],
-  imports: [
-    AppRoutingModule,
+  imports: [    
     BrowserModule,
+    AppRoutingModule,
     SharedModule,
     CountryModule   
   ],
