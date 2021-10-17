@@ -24,7 +24,6 @@ export class ForCountryComponent {
       console.log(err.error.status);
       if(err.error.status === 404){
         this.thereIsError=true;
-        console.log("here")
       }      
     });
   }
