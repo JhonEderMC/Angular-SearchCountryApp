@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-for-country',
@@ -6,11 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class ForCountryComponent implements OnInit {
+export class ForCountryComponent {
 
-  constructor() { }
+  term:string ="";
+  thereIsError:boolean = false;
 
-  ngOnInit(): void {
+  constructor(private searchService:SearchService) { }
+
+  search(){
+    this.thereIsError=false;      
+    //console.log(this.term)
+    this.searchService.searchCountry(this.term)
+    .subscribe((result)=>{
+      console.log(result);      
+    }, (err)=>{
+      console.log(err.error.status);
+      if(err.error.status === 404){
+        this.thereIsError=true;
+      }      
+    });
   }
+  
 
 }
