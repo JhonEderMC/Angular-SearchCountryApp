@@ -11,6 +11,8 @@ import { ForCountryComponent } from './pages/for-country/for-country.component';
 import { ForRegionComponent } from './pages/for-region/for-region.component';
 import { SeeCountryComponent } from './pages/see-country/see-country.component';
 import { RouterModule } from '@angular/router';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { CountryInputComponent } from './components/country-input/country-input.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { RouterModule } from '@angular/router';
     ForCountryComponent,
     ForRegionComponent,
     SeeCountryComponent,
+    CountryTableComponent,
+    CountryInputComponent,
   ],
   imports: [
     CommonModule,
