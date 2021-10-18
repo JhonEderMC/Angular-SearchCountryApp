@@ -17,7 +17,7 @@
 
 <div *ngIf="!thereIsError"class="row">
     <div class="col">
-        <table class="table table-hover">
+        <table  class="table table-hover">
             <thead>
                 <th>#</th>
                 <th>Flag</th>
@@ -25,14 +25,16 @@
                 <th>Population</th>
                 <th></th>                
             </thead>
-            <tbody>
+            <tbody *ngFor="let country of resultSearchCountries; let i=index;">
                 <tr>
-                    <td>1</td>
-                    <td>flag</td>
-                    <td>name</td>
-                    <td>131414</td>
+                    <td>{{i+1}}</td>
                     <td>
-                        <a href="/country">see...</a>
+                        <img class="small-flag" [src]="country.flags.png" alt="flag">
+                    </td>
+                    <td>{{country.name.common}}</td>
+                    <td>{{country.population | number}}</td>
+                    <td>
+                        <a [routerLink]= "['/country', country.cca2]" >see...</a>
                     </td>
                 </tr>
             </tbody>
