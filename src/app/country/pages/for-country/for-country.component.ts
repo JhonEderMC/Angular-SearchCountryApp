@@ -23,7 +23,7 @@ export class ForCountryComponent {
     .subscribe((result:Country [])=>{
       console.log(result);     
       this.resultSearchCountries = result;
-      result.forEach(country => country.cca2)
+      //result.forEach(country => country.cca2)
     }, (err)=>{
       console.log(err.error.status);
       if(err.error.status === 404){
