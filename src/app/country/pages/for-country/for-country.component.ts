@@ -10,7 +10,7 @@ import { Country } from '../../interfaces/country.interface';
 })
 export class ForCountryComponent {
 
-  term:string ="";
+  query:string ="";
   thereIsError:boolean = false;
   resultSearchCountries:Country [] =[];
 
@@ -19,11 +19,11 @@ export class ForCountryComponent {
   search(){    
     this.thereIsError=false;      
     //console.log(this.term)
-    this.searchService.searchCountry(this.term)
+    this.searchService.searchCountry(this.query)
     .subscribe((result:Country [])=>{
       console.log(result);     
       this.resultSearchCountries = result;
-      result.forEach(country => country.cca2)
+      //result.forEach(country => country.cca2)
     }, (err)=>{
       console.log(err.error.status);
       if(err.error.status === 404){
@@ -32,6 +32,8 @@ export class ForCountryComponent {
       }      
     });
   }
+
+  
   
 
 }
