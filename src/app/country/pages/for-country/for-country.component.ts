@@ -16,7 +16,7 @@ export class ForCountryComponent {
 
   constructor(private searchService:SearchService) { }
 
-  search(){
+  search(){    
     this.thereIsError=false;      
     //console.log(this.term)
     this.searchService.searchCountry(this.term)
@@ -28,7 +28,7 @@ export class ForCountryComponent {
       console.log(err.error.status);
       if(err.error.status === 404){
         this.thereIsError=true;
-        this.resultSearchCountries=[]
+        this.resultSearchCountries=[];
       }      
     });
   }
