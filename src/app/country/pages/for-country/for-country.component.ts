@@ -16,10 +16,10 @@ export class ForCountryComponent {
 
   constructor(private searchService:SearchService) { }
 
-  search(){    
-    this.thereIsError=false;      
-    //console.log(this.term)
-    this.searchService.searchCountry(this.query)
+  search(term:string){
+    this.query = term;    
+    this.thereIsError=false;          
+    this.searchService.searchCountry(term)
     .subscribe((result:Country [])=>{
       console.log(result);     
       this.resultSearchCountries = result;
