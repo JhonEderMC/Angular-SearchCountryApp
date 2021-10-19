@@ -33,6 +33,11 @@ export class ForCountryComponent {
     });
   }
 
+  suggestions(term:string){
+    this.thereIsError=false;
+    //TODO: Crear sugerencias
+  }
+
   
   
 
