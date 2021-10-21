@@ -5,6 +5,7 @@
         <app-country-input
             (onEnter) = "search($event)"
             (onDeBounce) ="suggestions($event)"
+            plHolder = "Search By Country..."
         >
 
         </app-country-input>
@@ -19,7 +20,7 @@
 <div *ngIf="!thereIsError"class="row">
     <div class="col">
         <app-country-table
-            [countries] = "resultSearchCountries"
+            [countries] = "resultSearch"
         ></app-country-table>
     </div>
 </div>

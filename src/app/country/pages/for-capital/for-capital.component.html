@@ -1,1 +1,21 @@
-<p>for-capital works!</p>
+<h2>By Capital</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <app-country-input
+      (onEnter)="search($event)"
+      plHolder="Search By Capital..."     
+    ></app-country-input>
+  </div>
+</div>
+
+<hr />
+<div *ngIf="thereIsError" class="alert alert-danger">
+  No results were found in the search: {{ query }}
+</div>
+
+<div *ngIf="!thereIsError" class="row">
+  <div class="col">
+    <app-country-table [countries]="resultSearch"></app-country-table>
+  </div>
+</div>
