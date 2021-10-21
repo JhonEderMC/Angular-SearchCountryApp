@@ -12,25 +12,30 @@ export class ForCountryComponent {
 
   query:string ="";
   thereIsError:boolean = false;
-  resultSearchCountries:Country [] =[];
+  resultSearch:Country [] =[];
 
   constructor(private searchService:SearchService) { }
 
-  search(){    
-    this.thereIsError=false;      
-    //console.log(this.term)
-    this.searchService.searchCountry(this.query)
+  search(term:string){
+    this.query = term;    
+    this.thereIsError=false;          
+    this.searchService.searchCountry(term)
     .subscribe((result:Country [])=>{
       console.log(result);     
-      this.resultSearchCountries = result;
+      this.resultSearch = result;
       //result.forEach(country => country.cca2)
     }, (err)=>{
       console.log(err.error.status);
       if(err.error.status === 404){
         this.thereIsError=true;
-        this.resultSearchCountries=[];
+        this.resultSearch=[];
       }      
     });
+  }
+
+  suggestions(term:string){
+    this.thereIsError=false;
+    //TODO: Crear sugerencias
   }
 
   
