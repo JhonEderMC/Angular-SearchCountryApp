@@ -19,4 +19,9 @@ export class SearchService {
     const url = `${this.apiUrl}/capital/${term}`
     return this.http.get<Country []>(url);
   }
+
+  searchACountryByCode(id:string):Observable<Country []>{
+    const url = `${this.apiUrl}/alpha/${id}`
+    return this.http.get<Country []>(url);    
+  }
 }
