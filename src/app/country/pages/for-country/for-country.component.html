@@ -19,7 +19,7 @@
 
 <div *ngIf="!thereIsError"class="row">
     <div class="col">
-        <app-country-table
+        <app-country-table *ngIf="resultSearch.length>0"
             [countries] = "resultSearch"
         ></app-country-table>
     </div>

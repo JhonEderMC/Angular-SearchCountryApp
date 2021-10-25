@@ -24,4 +24,9 @@ export class SearchService {
     const url = `${this.apiUrl}/alpha/${id}`
     return this.http.get<Country []>(url);    
   }
+
+  searchByRegion(region:string):Observable<Country[]>{
+    const url = `${this.apiUrl}/region/${region}`;
+    return this.http.get<Country []>(url);
+  }
 }
