@@ -5,13 +5,25 @@
         <app-country-input
             (onEnter) = "search($event)"
             (onDeBounce) ="suggestions($event)"
-            plHolder = "Search By Country..."
-        >
-
+            plHolder = "Search By Country...">
         </app-country-input>
     </div>
 </div>
 
+<ul class="list-group" *ngIf="showSuggestions">
+    <li class="list-group-item list-group-item-action" *ngFor="let country of countrySeggestions">
+        <a class="nav-link"
+            [routerLink]="['/country', country.cca2]">
+            {{country.name.common}}
+        </a>        
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <a  class="nav-link"
+            (click) = "searchSuggestions(query)">
+            Search "{{query}}"
+        </a>
+    </li>    
+</ul>
 <hr>
 <div *ngIf="thereIsError" class="alert alert-danger">
     No results were found in the search: {{query}}

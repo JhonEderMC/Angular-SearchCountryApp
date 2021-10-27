@@ -33,4 +33,10 @@ export class SearchService {
     const url = `${this.apiUrl}/region/${region}`;
     return this.http.get<Country []>(url, {params:this.httpParams});
   }
+
+  searChCountrySuggestions(term:string):Observable<Country[]>{
+    const url= `${this.apiUrl}/name/${term}`;
+    const params = new HttpParams().set('fields', 'name,cca2');
+    return this.http.get<Country[]>(url, {params:params});
+  }
 }

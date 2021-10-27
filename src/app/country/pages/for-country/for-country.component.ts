@@ -5,7 +5,8 @@ import { Country } from '../../interfaces/country.interface';
 @Component({
   selector: 'app-for-country',
   templateUrl: './for-country.component.html',
-  styles: [
+  styles: [ `li{
+    cursor:pointer}`
   ]
 })
 export class ForCountryComponent {
@@ -13,12 +14,15 @@ export class ForCountryComponent {
   query:string ="";
   thereIsError:boolean = false;
   resultSearch:Country [] =[];
+  countrySeggestions:Country[] =[];
+  showSuggestions:boolean = false;
 
   constructor(private searchService:SearchService) { }
 
   search(term:string){
     this.query = term;    
-    this.thereIsError=false;          
+    this.thereIsError=false; 
+    this.countrySeggestions=[];
     this.searchService.searchCountry(term)
     .subscribe((result:Country [])=>{
       console.log(result);     
@@ -30,12 +34,24 @@ export class ForCountryComponent {
         this.thereIsError=true;
         this.resultSearch=[];
       }      
-    });
+    });    
   }
 
   suggestions(term:string){
     this.thereIsError=false;
-    //TODO: Crear sugerencias
+    this.showSuggestions=true;
+    this.query = term;
+    this.searchService.searChCountrySuggestions(term)
+      .subscribe(list =>{
+        this.countrySeggestions = list.splice(0,5)        
+      }, (error)=>{
+        this.countrySeggestions=[]
+      });
+  }
+
+  searchSuggestions(term:string){
+    this.search(term);
+    this.showSuggestions=false;
   }
 
   

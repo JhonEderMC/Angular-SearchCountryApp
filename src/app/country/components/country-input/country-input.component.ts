@@ -22,8 +22,7 @@ export class CountryInputComponent implements OnInit{
   ngOnInit(){
     this.deBounce
     .pipe( debounceTime(500)) //wait 400ms before to subscribe
-    .subscribe(value=>{
-      //console.log("onInit Debounce: ",value);
+    .subscribe(value=>{     
       this.onDeBounce.emit(value);
     })    
   }
